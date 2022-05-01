@@ -1,5 +1,6 @@
 package com.ikaileblog.config;
 
+import com.ikaileblog.cache.RedisTokenRepository;
 import com.ikaileblog.service.impl.AuthServiceImpl;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -13,7 +14,7 @@ import javax.annotation.Resource;
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Resource
-    com.ikaileblog.cache.RedisTokenRepository RedisTokenRepository;
+    RedisTokenRepository redisTokenRepository;
     @Resource
     AuthServiceImpl service;
 
@@ -37,7 +38,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and()
                 .rememberMe()
                 .userDetailsService(service)
-                .tokenRepository(RedisTokenRepository)
+                .tokenRepository(redisTokenRepository)
                 .rememberMeParameter("remember")
                 .and()
                 .csrf()
