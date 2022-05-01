@@ -7,5 +7,5 @@
 /dataSources/
 /dataSources.local.xml
 
-!**/main/**/target
-!**/main/resources/application.yml
+**/main/**/target
+**/main/resources/application.yml
