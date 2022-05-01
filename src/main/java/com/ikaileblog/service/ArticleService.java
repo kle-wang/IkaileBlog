@@ -13,4 +13,6 @@ public interface ArticleService {
     RestBean<List<ArticleVo>> listArticle(PageParams pageParams);
 
     RestBean<ArticleVo> listArticleById(Integer id);
+
+    RestBean<List<ArticleVo>> listArticleByCategoryId(PageParams pageParams, Integer id);
 }

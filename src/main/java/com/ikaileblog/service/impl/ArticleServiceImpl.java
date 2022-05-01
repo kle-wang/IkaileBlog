@@ -80,9 +80,9 @@ public class ArticleServiceImpl implements ArticleService {
         return articleVoList;
     }
 
-    private ArticleVo copy(Article article){
+    private ArticleVo copy(Article article) {
         ArticleVo articleVo = new ArticleVo();
-        BeanUtils.copyProperties(article,articleVo);
+        BeanUtils.copyProperties(article, articleVo);
         Integer articleId = article.getId();
         articleVo.setTags(tagMapper.findTagNameByArticleId(articleId));
         articleVo.setBody(articleBodyMapper.findArticleBodyById(articleId));
@@ -90,4 +90,21 @@ public class ArticleServiceImpl implements ArticleService {
         articleVo.setCategory(categoryMapper.findCategoryByArticleId(articleId));
         return articleVo;
     }
+
+
+    /**
+     * 分类下所有文章
+     */
+    @Override
+    public RestBean<List<ArticleVo>> listArticleByCategoryId(PageParams pageParams, Integer id) {
+        Page<Article> page = new Page<>(pageParams.getPage(), pageParams.getPageSize());
+        LambdaQueryWrapper<Article> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.orderByDesc(Article::getWeight, Article::getCreate_data);
+        queryWrapper.eq(Article::getCategory_id, id);
+        Page<Article> articlePage = articleMapper.selectPage(page, queryWrapper);
+        List<Article> records = articlePage.getRecords();
+        List<ArticleVo> articleVoList = copyList(records);
+        return new RestBean<>(200, "请求成功", articleVoList);
+    }
 }
+

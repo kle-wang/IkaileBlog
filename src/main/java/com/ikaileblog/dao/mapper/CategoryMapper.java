@@ -10,4 +10,6 @@ public interface CategoryMapper extends BaseMapper<Category> {
 
     @Select("select category_name from kl_category where id in (select category_id from kl_article where id = #{articleId})")
     CategoryVo findCategoryByArticleId(@Param("articleId") Integer articleId);
+
+
 }

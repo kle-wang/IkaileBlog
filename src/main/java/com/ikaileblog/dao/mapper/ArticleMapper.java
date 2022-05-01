@@ -5,5 +5,4 @@ import com.ikaileblog.dao.pojo.Article;
 
 
 public interface ArticleMapper extends BaseMapper<Article> {
-
 }
