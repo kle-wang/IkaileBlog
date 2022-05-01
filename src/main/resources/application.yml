@@ -1,0 +1,22 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password:
+    url: jdbc:mysql://10.211.55.3:3306/blog
+  redis:
+    host: 10.211.55.3
+    port: 6379
+    password:
+    database: 0
+  mail:
+     host: smtp.qiye.aliyun.com
+     username:
+     password:
+mybatis:
+  configuration:
+    cache-enabled: true
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    map-underscore-to-camel-case: false
