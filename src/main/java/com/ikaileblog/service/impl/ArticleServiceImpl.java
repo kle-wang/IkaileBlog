@@ -15,6 +15,7 @@ import com.ikaileblog.vo.CategoryVo;
 import com.ikaileblog.vo.RestBean;
 import com.ikaileblog.vo.TagVo;
 import com.ikaileblog.vo.params.ArticleParam;
+import com.ikaileblog.vo.params.CategoryPageParams;
 import com.ikaileblog.vo.params.PageParams;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -108,11 +109,10 @@ public class ArticleServiceImpl implements ArticleService {
      * 分类下所有文章
      */
     @Override
-    public RestBean<List<ArticleVo>> listArticleByCategoryId(PageParams pageParams, Integer id) {
-        Page<Article> page = new Page<>(pageParams.getPage(), pageParams.getPageSize());
-        LambdaQueryWrapper<Article> queryWrapper = new LambdaQueryWrapper<>();
-        queryWrapper.orderByDesc(Article::getWeight, Article::getCreate_data);
-        queryWrapper.eq(Article::getCategory_id, id);
+    public RestBean<List<ArticleVo>> listArticleByCategoryId(CategoryPageParams categoryPageParams) {
+        Page<Article> page = new Page<>(categoryPageParams.getPage(), categoryPageParams.getPageSize());
+        QueryWrapper<Article> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("category_id", categoryPageParams.getCategoryId()).orderByDesc("weight", "create_data");
         Page<Article> articlePage = articleMapper.selectPage(page, queryWrapper);
         List<Article> records = articlePage.getRecords();
         List<ArticleVo> articleVoList = copyList(records);
