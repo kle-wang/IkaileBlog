@@ -18,4 +18,6 @@ public interface ArticleService {
     RestBean<List<ArticleVo>> listArticleByCategoryId(PageParams pageParams, Integer id);
 
     RestBean<Integer> publish(ArticleParam articleParam);
+
+    RestBean<Void> delete(Integer id);
 }

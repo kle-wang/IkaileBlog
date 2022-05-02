@@ -180,6 +180,17 @@ public class ArticleServiceImpl implements ArticleService {
 
     }
 
+    @Override
+    public RestBean<Void> delete(Integer id) {
+        // article本身
+        // articleBody
+        // article_tag
+        articleMapper.deleteById(id);
+        articleBodyMapper.deleteArticleBodyById(id);
+        articleTagMapper.deleteArticleTagById(id);
+        return new RestBean<>(200, "删除完毕");
+    }
+
 
 }
 
