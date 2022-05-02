@@ -7,7 +7,6 @@ import com.ikaileblog.cache.RedisMybatisCache;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import javax.annotation.PostConstruct;
@@ -36,10 +35,4 @@ public class MainConfiguration implements WebMvcConfigurer {
             return interceptor;
         }
 
-
-    @Override
-    public void addCorsMappings(CorsRegistry registry) {
-//        //跨域配置
-        registry.addMapping("/**").allowedOrigins("*");
     }
-}

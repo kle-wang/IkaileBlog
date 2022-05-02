@@ -22,5 +22,6 @@ public class Article {
     private Integer category_id;
     private Integer weight;
     private String title;
+    private String friend_name;
 
 }

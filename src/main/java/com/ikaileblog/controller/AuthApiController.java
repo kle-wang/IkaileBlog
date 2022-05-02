@@ -15,6 +15,7 @@ import javax.annotation.Resource;
 @Controller
 @ResponseBody
 @RequestMapping("/api/auth")
+
 public class AuthApiController {
 
     @Resource

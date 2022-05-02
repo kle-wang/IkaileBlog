@@ -84,6 +84,26 @@ public class ArticleServiceImpl implements ArticleService {
         return new RestBean<>(200, "请求成功", articleVo);
     }
 
+    /**
+     * 根据别名查找文章
+     */
+    @Override
+    public RestBean<ArticleVo> listArticleByFriendName(String friend_name) {
+        Integer id = articleMapper.getArticleIdByFriendName(friend_name);
+        QueryWrapper<Article> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("id", id);
+        Article article = articleMapper.selectOne(queryWrapper);
+        if (article == null) return new RestBean<>(404, "文章不存在");
+        //开始处理浏览量
+        ArticleVo articleVo = copy(article);
+        threadService.updateArticleViewCount(article);
+        String viewCount = (String) redisTemplate.opsForHash().get("article_view_count", String.valueOf(id));
+        if (viewCount != null) {
+            articleVo.setView_count(Integer.parseInt(viewCount));
+        }
+        return new RestBean<>(200, "请求成功", articleVo);
+    }
+
 
     private List<ArticleVo> copyList(List<Article> records) {
         List<ArticleVo> articleVoList = new ArrayList<>();

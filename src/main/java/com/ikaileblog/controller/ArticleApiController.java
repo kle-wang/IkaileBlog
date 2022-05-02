@@ -18,6 +18,7 @@ import java.util.List;
 @Controller
 @ResponseBody
 @RequestMapping("/api/post")
+
 public class ArticleApiController {
 
 
@@ -36,10 +37,19 @@ public class ArticleApiController {
     /**
      * 根据id获取单个文章
      */
-    @ApiOperation("获取单个文章")
-    @PostMapping("/article/{id}")
+    @ApiOperation("获取单个文章 通过id")
+    @PostMapping("/article/id/{id}")
     public RestBean<ArticleVo> getArticleById(@PathVariable Integer id) {
         return articleService.listArticleById(id);
+    }
+
+    /**
+     * 根据别名获取单个文章
+     */
+    @ApiOperation("获取单个文章 通过friendname")
+    @PostMapping("/article/name/{name}")
+    public RestBean<ArticleVo> getArticleByFriendName(@PathVariable String name) {
+        return articleService.listArticleByFriendName(name);
     }
 
     /**

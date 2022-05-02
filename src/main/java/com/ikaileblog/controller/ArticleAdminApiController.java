@@ -18,6 +18,7 @@ import javax.annotation.Resource;
 @Controller
 @ResponseBody
 @RequestMapping("/api/admin")
+
 public class ArticleAdminApiController {
 
     @Resource

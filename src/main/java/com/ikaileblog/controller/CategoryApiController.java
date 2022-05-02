@@ -16,7 +16,9 @@ import java.util.List;
 @Api(tags = "分类列表", description = "观看所有分类")
 @Controller
 @ResponseBody
+
 @RequestMapping("/api")
+
 public class CategoryApiController {
 
     @Resource

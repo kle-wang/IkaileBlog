@@ -20,7 +20,9 @@ import javax.annotation.Resource;
 @Api(tags = "用户相关", description = "查看用户信息")
 @Controller
 @ResponseBody
+
 @RequestMapping("/api/user")
+
 public class UserApiController {
 
     @Resource

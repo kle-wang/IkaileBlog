@@ -16,4 +16,5 @@ public class ArticleVo {
     private ArticleBodyVo body;
     private List<TagVo> tags;
     private CategoryVo category;
+    private String friend_name;
 }

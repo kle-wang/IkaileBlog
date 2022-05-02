@@ -16,6 +16,8 @@ public interface ArticleService {
 
     RestBean<ArticleVo> listArticleById(Integer id);
 
+    RestBean<ArticleVo> listArticleByFriendName(String friend_name);
+
     RestBean<List<ArticleVo>> listArticleByCategoryId(CategoryPageParams categoryPageParams);
 
     RestBean<Integer> publish(ArticleParam articleParam);
