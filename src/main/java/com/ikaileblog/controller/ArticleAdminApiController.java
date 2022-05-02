@@ -36,6 +36,7 @@ public class ArticleAdminApiController {
     /**
      * 删除文章
      */
+    @ApiOperation("删除文章 提供文章id即可")
     @PostMapping("/delete")
     public RestBean<Void> deleteArticle(@Param("id") Integer id) {
         if (id == null) return new RestBean<>(403, "参数错误");

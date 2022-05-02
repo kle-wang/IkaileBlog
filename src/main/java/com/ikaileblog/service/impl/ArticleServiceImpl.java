@@ -185,6 +185,10 @@ public class ArticleServiceImpl implements ArticleService {
         // article本身
         // articleBody
         // article_tag
+        QueryWrapper<Article> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("id", id);
+        Article article = articleMapper.selectOne(queryWrapper);
+        if (article == null) return new RestBean<>(404, "文章不存在");
         articleMapper.deleteById(id);
         articleBodyMapper.deleteArticleBodyById(id);
         articleTagMapper.deleteArticleTagById(id);
