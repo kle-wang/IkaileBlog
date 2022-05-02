@@ -8,7 +8,7 @@ import org.apache.ibatis.annotations.Select;
 
 public interface ArticleBodyMapper extends BaseMapper<ArticleBody> {
 
-    @Select("select context from kl_article_body where article_id in (select body_id from kl_article where id = #{articleId})")
+    @Select("select * from kl_article_body where article_id in (select body_id from kl_article where id = #{articleId})")
     ArticleBodyVo findArticleBodyById(@Param("articleId") Integer articleId);
 
 }

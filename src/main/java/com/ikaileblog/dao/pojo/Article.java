@@ -16,7 +16,6 @@ public class Article {
     private Integer view_count;
     private Integer author_id;
     private Integer body_id;
-    private Integer tag_id;
     private Integer category_id;
     private Integer weight;
     private String title;

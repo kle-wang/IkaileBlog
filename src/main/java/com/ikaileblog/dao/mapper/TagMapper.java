@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface TagMapper extends BaseMapper<Tag> {
 
-    @Select("select tagname from kl_tag where id in (select tag_id from kl_article_tag where article_id = #{article_id})")
+    @Select("select * from kl_tag where id in (select tag_id from kl_article_tag where article_id = #{article_id})")
     List<TagVo> findTagNameByArticleId(@Param("article_id") Integer article_id);
 
 
