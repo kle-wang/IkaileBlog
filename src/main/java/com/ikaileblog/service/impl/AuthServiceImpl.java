@@ -1,8 +1,8 @@
 package com.ikaileblog.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.ikaileblog.dao.pojo.Account;
 import com.ikaileblog.dao.mapper.AuthMapper;
+import com.ikaileblog.dao.pojo.Account;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -29,7 +29,7 @@ public class AuthServiceImpl implements UserDetailsService {
         return User
                 .withUsername(data.getUsername())
                 .password(data.getPassword())
-                .roles("user")
+                .roles(data.getRole())
                 .build();
     }
     /**
